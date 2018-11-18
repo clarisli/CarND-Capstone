@@ -23,7 +23,7 @@ as well as to verify your TL classifier.
 TODO (for Yousuf and Aaron): Stopline location for each traffic light.
 '''
 
-PUBLISHING_RATE = 25
+PUBLISHING_RATE = 50 # Waypoint_follower runs at 30Hz. We should keep this at 30hz+ to avoid problems
 LOOKAHEAD_WPS = 50 # Number of waypoints we will publish. You can change this number
 MAX_DECEL = .5 
 
@@ -51,7 +51,7 @@ class WaypointUpdater(object):
         self.loop()
     
     def loop(self):
-        rate = rospy.Rate(PUBLISHING_RATE)
+        rate = rospy.Rate(PUBLISHING_RATE) 
         while not rospy.is_shutdown():
             if self.pose and self.base_lane:
                  self.publish_waypoints()
